@@ -1,0 +1,32 @@
+.aboutContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 1rem;
+  margin: 10% 7% 50px 35%;
+  width: 50%;
+}
+
+.aboutContainer p {
+  text-align: center;
+}
+
+/* PAGE BREAKS */
+
+@media screen and (max-width: 1020px) {
+  .aboutContainer {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .aboutContainer {
+    width: 85%;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .aboutContainer {
+    margin: 120px auto 0 auto;
+  }
+}

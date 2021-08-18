@@ -1,0 +1,47 @@
+.showContainer {
+  margin: 0px 7% 50px 30%;
+  width: 100%;
+}
+
+.showWrap {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.noGigPlaceholder {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  color: #ef7e56;
+  margin: 30% 20% 0% 35%;
+}
+
+/* PAGE BREAKS */
+
+@media screen and (max-width: 1080px) {
+  .showContainer {
+    margin: 0px 7% 50px 40%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .showContainer,
+  .showWrap {
+    width: 400px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .showContainer,
+  .showWrap {
+    margin: 50px 15px 0px 7px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .showContainer,
+  .showWrap {
+    width: 250px;
+    margin: 50px 10px 0px 10px;
+  }
+}

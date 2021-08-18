@@ -1,0 +1,69 @@
+.showListing,
+.showInfo {
+  padding: 5px 0px;
+}
+
+.showInfo {
+  width: 70%;
+}
+
+.showInfo p,
+.showInfo h3 {
+  margin: 0px;
+}
+
+.showListing {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid #ded5c4;
+}
+
+.showVenue {
+  font-weight: 400;
+  font-style: italic;
+}
+
+.showAgeAccess {
+  font-weight: 200;
+}
+
+.showDate {
+  margin-left: auto;
+  font-weight: 200;
+  padding: 10px;
+  background-color: #ef7e56;
+  border-radius: 8%;
+}
+
+.showDate p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+
+.showMonthDay {
+  font-weight: 400;
+}
+
+.ticketLink {
+  font-size: 0.8rem;
+  font-weight: 400;
+  font-style: italic;
+  color: #ef7e56;
+  transition: color 0.2s;
+}
+
+.showInfo a:hover {
+  color: #ded5c4;
+}
+
+/* PAGE BREAKS */
+
+@media screen and (max-width: 550px) {
+  .showInfo,
+  .showDate {
+    font-size: 0.6rem;
+  }
+}

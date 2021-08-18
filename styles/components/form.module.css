@@ -1,0 +1,113 @@
+.formContainer {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 50%;
+  margin: 8% 0% 0px 35%;
+}
+
+.gigForm {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 100%;
+  border-radius: 5px;
+  color: #305973;
+  /* padding: 10px 15px 10px 10px; */
+}
+
+/* INPUTS */
+
+.formInput,
+.formInput input,
+.formInput textarea {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.8rem;
+  margin: 5px;
+  width: 100%;
+  border: none;
+}
+
+.halfFormInput,
+.halfFormInput input {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.8rem;
+  margin: 5px;
+  width: 40%;
+  border: none;
+}
+
+.halfFormInput input {
+  width: 100%;
+  height: 25px;
+  box-shadow: 2px 2px 5px rgb(139, 139, 139);
+  background-color: #eeeeee;
+}
+
+.formInput textarea {
+  height: 75px;
+  border: none;
+  box-shadow: 2px 2px 5px rgb(139, 139, 139);
+  background-color: #eeeeee;
+}
+
+.formInput input {
+  height: 25px;
+  box-shadow: 2px 2px 5px rgb(139, 139, 139);
+  background-color: #eeeeee;
+}
+
+.dropFormInput {
+  width: 40%;
+  margin: 5px;
+  font-size: 0.8rem;
+}
+
+.dropFormInput select,
+.dropFormInput input {
+  width: 100%;
+  height: 25px;
+  margin: 5px;
+  border: none;
+  box-shadow: 2px 2px 5px rgb(139, 139, 139);
+  background-color: #eeeeee;
+}
+
+/* SUBMIT BUTTON */
+
+.submitContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.submitInput {
+  font-family: "Poppins", sans-serif;
+  color: #ffffff;
+  width: 100px;
+  height: 60px;
+  background-color: #ef7e56;
+  border: 2px solid white;
+  border-radius: 8%;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submitInput:hover {
+  background-color: #fcb095;
+}
+
+/* PAGE BREAKS */
+
+@media screen and (max-width: 700px) {
+  .formContainer {
+    width: 100%;
+    margin: 165px 10% 0px 10%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .formContainer {
+    margin-top: 125px;
+  }
+}
