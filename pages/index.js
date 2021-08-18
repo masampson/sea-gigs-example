@@ -65,13 +65,13 @@ function SeaGigs({ gigs }) {
       setFilterState("09");
       setDisplayState("gigs");
     } else if (selectedMonth === "OCTOBER") {
-      setFilterState("10");
+      setFilterState(10);
       setDisplayState("gigs");
     } else if (selectedMonth === "NOVEMBER") {
-      setFilterState("11");
+      setFilterState(11);
       setDisplayState("gigs");
     } else if (selectedMonth === "DECEMBER") {
-      setFilterState("12");
+      setFilterState(12);
       setDisplayState("gigs");
     }
   }
