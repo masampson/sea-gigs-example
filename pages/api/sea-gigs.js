@@ -11,7 +11,7 @@ export default function handler(req, res) {
     const api = Cosmic();
     const bucket = api.bucket({
       slug: "sea-gigs-production",
-      write_key: "1DMgVRBOE8zfERWQNCqo8TzwduZ10qtBfgKiMpDnpOHK3JvgJF",
+      write_key: process.env.COSMIC_WRITE_KEY,
     });
     console.log(req.body.evt);
     const data = req.body.evt;

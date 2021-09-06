@@ -10,7 +10,7 @@ const api = Cosmic();
 
 const bucket = api.bucket({
   slug: "sea-gigs-production",
-  read_key: "Cnl81h1nXItxaSfeVIJ83Il5MAkMkWeTzNTwsoW7pzdlNk01Yc",
+  read_key: process.env.COSMIC_READ_KEY,
 });
 
 function SeaGigs({ gigs }) {
@@ -27,7 +27,7 @@ function SeaGigs({ gigs }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ evt }),
     });
-    console.log(response, evt);
+    // console.log(response, evt);
   }
 
   // Set display (Gigs, About, Submit etc.)
