@@ -65,3 +65,48 @@
 .dropdownLink:hover > .dropdownContent {
   visibility: visible;
 }
+
+/* PAGE BREAKS */
+
+@media screen and (max-width: 1080px) {
+  .searchAndFilterContainer {
+    width: 55%;
+  }
+
+  .monthButton {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 755px) {
+  .monthButton {
+    font-size: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .monthButton {
+    font-size: 0.8rem;
+  }
+  .dropdownContent {
+    margin-left: -15px;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .searchAndFilterContainer {
+    width: 97%;
+    margin-top: 12px;
+  }
+
+  .dropdownContent {
+    padding: 5px;
+    margin-left: -15px;
+  }
+
+  .dropdownContent a {
+    color: #ef7e56;
+    font-size: 0.7rem;
+    transition: color 0.2s;
+  }
+}
