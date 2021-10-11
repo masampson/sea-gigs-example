@@ -16,7 +16,8 @@ const bucket = api.bucket({
 function SeaGigs({ gigs }) {
   // STATE MANAGEMENT ==========
   const [displayState, setDisplayState] = useState("gigs");
-  const [filterState, setFilterState] = useState("all");
+  // const [gigsFilteredMonthState, setGigsFilteredMonthState] = useState(gigs);
+  // console.log(gigsFilteredMonthState);
 
   // FUNCTIONS ===============
 
@@ -30,60 +31,101 @@ function SeaGigs({ gigs }) {
     // console.log(response, evt);
   }
 
+  // DATE TURNOVER ================
+
+  let today = new Date();
+  let currentMonth = today.getMonth() + 1;
+  let currentDay = today.getDate();
+
+  let thisMonthGigs = gigs.filter(
+    (gig) =>
+      parseInt(gig.metadata.month) === currentMonth &&
+      parseInt(gig.metadata.day) >= currentDay
+  );
+
+  let futureMonthGigs = gigs.filter(
+    (gig) => parseInt(gig.metadata.month) > currentMonth
+  );
+
+  let currentGigs = [...thisMonthGigs, ...futureMonthGigs];
+
+  // let filteredGigs =
+  //   filterState === "all"
+  //     ? currentGigs
+  //     : currentGigs.filter((gig) => gig.metadata.month === filterState);
+
   // Set display (Gigs, About, Submit etc.)
   function getDisplay(display) {
     setDisplayState(display);
   }
+  // REPLACE SEPARATE FUNCTIONS ONCE MONTH THING IS FIGURED OUT
+  // function updateGigListUI(filter, display) {
+  //   setFilterState(filter)
+  //   setDisplayState(display)
+  // }
 
   // Filter by Month
-  function filterGigs(selectedMonth) {
-    if (selectedMonth === "JANUARY") {
-      setFilterState("01");
-      setDisplayState("gigs");
-    } else if (selectedMonth === "FEBRUARY") {
-      setFilterState("02");
-      setDisplayState("gigs");
-    } else if (selectedMonth === "MARCH") {
-      setFilterState("03");
-      setDisplayState("gigs");
-    } else if (selectedMonth === "APRIL") {
-      setFilterState("04");
-      setDisplayState("gigs");
-    } else if (selectedMonth === "MAY") {
-      setFilterState("05");
-      setDisplayState("gigs");
-    } else if (selectedMonth === "JUNE") {
-      setFilterState("06");
-      setDisplayState("gigs");
-    } else if (selectedMonth === "JULY") {
-      setFilterState("07");
-      setDisplayState("gigs");
-    } else if (selectedMonth === "AUGUST") {
-      setFilterState("08");
-      setDisplayState("gigs");
-    } else if (selectedMonth === "SEPTEMBER") {
-      setFilterState("09");
-      setDisplayState("gigs");
-    } else if (selectedMonth === "OCTOBER") {
-      setFilterState(10);
-      setDisplayState("gigs");
-    } else if (selectedMonth === "NOVEMBER") {
-      setFilterState(11);
-      setDisplayState("gigs");
-    } else if (selectedMonth === "DECEMBER") {
-      setFilterState(12);
-      setDisplayState("gigs");
-    }
-  }
+  // function filterGigMonth(selectedData) {
+  //   if (selectedData === "ALL") {
+  //     setFilterState("all");
+  //     setDisplayState("gigs");
+  //     console.log(filterState);
+  //   } else if (selectedData === "GIGS") {
+  //     setFilterState("all");
+  //     setDisplayState("gigs");
+  //     console.log(filterState);
+  //   } else if (selectedData === "JANUARY") {
+  //     setFilterState("01");
+  //     setDisplayState("gigs");
+  //     console.log(filterState);
+  //   } else if (selectedData === "FEBRUARY") {
+  //     setFilterState("02");
+  //     setDisplayState("gigs");
+  //     console.log(filterState);
+  //   } else if (selectedData === "MARCH") {
+  //     setFilterState("03");
+  //     setDisplayState("gigs");
+  //     console.log(filterState);
+  //   } else if (selectedData === "APRIL") {
+  //     setFilterState("04");
+  //     setDisplayState("gigs");
+  //     console.log(filterState);
+  //   } else if (selectedData === "MAY") {
+  //     setFilterState("05");
+  //     setDisplayState("gigs");
+  //     console.log(filterState);
+  //   } else if (selectedData === "JUNE") {
+  //     setFilterState("06");
+  //     setDisplayState("gigs");
+  //     console.log(filterState);
+  //   } else if (selectedData === "JULY") {
+  //     setFilterState("07");
+  //     setDisplayState("gigs");
+  //     console.log(filterState);
+  //   } else if (selectedData === "AUGUST") {
+  //     setFilterState("08");
+  //     setDisplayState("gigs");
+  //     console.log(filterState);
+  //   } else if (selectedData === "SEPTEMBER") {
+  //     setFilterState("09");
+  //     setDisplayState("gigs");
+  //     console.log(filterState);
+  //   } else if (selectedData === "OCTOBER") {
+  //     setFilterState(10);
+  //     setDisplayState("gigs");
+  //     console.log(filterState);
+  //   } else if (selectedData === "NOVEMBER") {
+  //     setFilterState(11);
+  //     setDisplayState("gigs");
+  //     console.log(filterState);
+  //   } else if (selectedData === "DECEMBER") {
+  //     setFilterState(12);
+  //     setDisplayState("gigs");
+  //     console.log(filterState);
+  //   }
+  // }
 
-  // VARIABLES ================
-
-  let filteredGigs =
-    filterState === "all"
-      ? gigs
-      : gigs.filter((gig) => gig.metadata.month === filterState);
-
-  let content = <GigList gigs={filteredGigs}></GigList>;
+  let content = <GigList gigs={currentGigs}></GigList>;
 
   // Set display content based on state
   if (displayState === "about") {
@@ -91,7 +133,7 @@ function SeaGigs({ gigs }) {
   } else if (displayState === "submit") {
     content = <Form addEvt={addEvt}></Form>;
   } else {
-    content = <GigList gigs={filteredGigs}></GigList>;
+    content = <GigList gigs={currentGigs} getDisplay={getDisplay}></GigList>;
   }
 
   return (
@@ -121,14 +163,14 @@ function SeaGigs({ gigs }) {
       </Head>
 
       <section className={styles.bodyContainer}>
-        <Header getDisplay={getDisplay} filterGigs={filterGigs}></Header>
+        <Header getDisplay={getDisplay}></Header>
         {content}
       </section>
     </div>
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const data = await bucket.getObjects({
     query: {
       type: "gigs",

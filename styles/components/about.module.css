@@ -3,11 +3,55 @@
   justify-content: center;
   flex-wrap: wrap;
   font-size: 1rem;
-  margin: 10% 7% 50px 35%;
+  margin: 5% 7% 50px 35%;
   width: 50%;
 }
 
 .aboutContainer p {
+  text-align: center;
+}
+
+.aboutContainer a {
+  color: #ef7e56;
+  transition: color 0.2s;
+}
+
+.aboutContainer a:hover {
+  color: #ded5c4;
+}
+
+/* FAQ SECTION */
+.faqSection {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.faqSection h2 h3 p {
+  width: 100%;
+}
+
+.faqSection ul {
+  margin: 0px;
+}
+
+.faqSection li {
+  text-align: left;
+}
+
+.faqSection h2 {
+  font-family: "Unica One" sans-serif;
+  font-size: 2rem;
+  color: #305973;
+  margin: 10px 100% 10px 100%;
+  border-bottom: 2px solid #ef7e56;
+}
+
+.faqSection h3 {
+  font-family: "Unica One" sans-serif;
+  color: #914c33;
+  margin-bottom: 5px;
   text-align: center;
 }
 

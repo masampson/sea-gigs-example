@@ -14,7 +14,7 @@ function Header(props) {
       </div>
       <NavBar
         getDisplay={props.getDisplay}
-        filterGigs={props.filterGigs}
+        filterGigMonth={props.filterGigMonth}
       ></NavBar>
     </div>
   );

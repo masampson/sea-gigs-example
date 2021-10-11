@@ -20,7 +20,7 @@ function GigCard(props) {
           ${gig.cost} / {gig.age} / {gig.access}
         </p>
         <p>
-          <a href={gig.ticketing} className={styles.ticketLink}>
+          <a href={gig.ticketing} className={styles.ticketLink} target="_blank">
             Ticket Information
           </a>
         </p>

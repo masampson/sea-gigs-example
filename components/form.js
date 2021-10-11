@@ -111,6 +111,15 @@ function Form(props) {
           />
         </div>
       </form>
+      <div className={styles.bookerNotice}>
+        <p>
+          Are you a booker or promoter and need to submit many gigs at once?
+          Please get in touch at{" "}
+          <span>
+            <a href="mailto: goseagigs@gmail.com">goseagigs@gmail.com</a>
+          </span>
+        </p>
+      </div>
     </div>
   );
 }
