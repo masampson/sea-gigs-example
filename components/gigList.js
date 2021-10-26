@@ -157,7 +157,7 @@ function GigList(props) {
     });
   }
 
-  // DEFINTE CONTENT BASED ON FILTERS AND SEARCH
+  // DEFINE CONTENT BASED ON FILTERS AND SEARCH
   let content =
     filteredGigs.length >= 1 ? (
       filteredGigs.map((gig) => (
