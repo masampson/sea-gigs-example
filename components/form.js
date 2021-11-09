@@ -1,7 +1,7 @@
 import styles from "../styles/components/form.module.css";
 
 function Form(props) {
-  // Form Reset
+  // Form reset
   const formReset = function () {
     document.getElementById("title").value = "";
     document.getElementById("venue").value = "";
