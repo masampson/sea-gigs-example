@@ -1,0 +1,17 @@
+{
+  "name": "seagigs",
+  "env": {
+    "COSMIC_READ_KEY": {
+      "required": true
+    },
+    "COSMIC_WRITE_KEY": {
+      "required": true
+    }
+  },
+  "addons": [],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
