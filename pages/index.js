@@ -4,7 +4,7 @@ import { useState } from "react";
 import Header from "../components/header";
 import GigList from "../components/gigList";
 import About from "../components/about";
-import Form from "../components/Form";
+import Form from "../components/form";
 const Cosmic = require("cosmicjs");
 const api = Cosmic();
 
