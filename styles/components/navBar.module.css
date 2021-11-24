@@ -23,7 +23,7 @@
   cursor: pointer;
 }
 
-.navContainer ion-icon {
+.mobileNav {
   display: none;
 }
 
@@ -50,15 +50,16 @@
     border: 1px solid black;
   }
 
-  .navContainer ion-icon {
+  .mobileNav {
     display: block;
-    color: #ef7e56;
+  }
+
+  .mobileNavIcon {
     font-size: 2rem;
-    /* display: inherit; */
     position: fixed;
   }
 
-  .navContainer ion-icon:active {
+  .mobileNavIcon:active {
     color: gray;
   }
 

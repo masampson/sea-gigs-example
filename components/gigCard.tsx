@@ -1,6 +1,30 @@
 import styles from "../styles/components/gigCard.module.css";
 
-function GigCard(props) {
+interface GigCardProps {
+  gig: {
+    content?: string;
+    metadata: {
+      title: string;
+      key: number;
+      venue: string;
+      cost: string;
+      year: number;
+      month: string | number;
+      day: string;
+      time: string;
+      age: string;
+      access: string;
+      email: string;
+      ticketing: string;
+      additional?: string;
+    };
+    slug: string;
+    title: string;
+  };
+  key: number;
+}
+
+function GigCard(props: GigCardProps) {
   const gig = props.gig.metadata;
   const hour = parseInt(gig.time.slice(0, 2));
   const hourFormat = hour - (hour > 13 ? 12 : 0);

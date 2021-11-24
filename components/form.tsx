@@ -1,39 +1,78 @@
+import { FormEvent, useState } from "react";
 import styles from "../styles/components/form.module.css";
+import { Gig, GigListProps } from "./gigList";
 
-function Form(props) {
+interface FormSubmitFormat {
+  title: string;
+  key: number;
+  venue: string;
+  cost: string;
+  year: number;
+  month: number;
+  day: number;
+  time: string;
+  age: string;
+  access: string;
+  email: string;
+  ticketing: string;
+  additional: string;
+}
+
+interface FormProps {
+  addEvt: (evt: FormSubmitFormat) => void;
+}
+
+function Form(props: FormProps) {
   // Form Reset
   const formReset = function () {
-    document.getElementById("title").value = "";
-    document.getElementById("venue").value = "";
-    document.getElementById("cost").value = "";
-    document.getElementById("date").value = "";
-    document.getElementById("time").value = "";
-    document.getElementById("ages").value = "21+";
-    document.getElementById("accessibility").value = "Handicap Accessible";
-    document.getElementById("email").value = "";
-    document.getElementById("ticketing").value = "";
-    document.getElementById("extraInfo").value = "";
+    const titleInput = document.getElementById("gigTitle") as HTMLInputElement;
+    const venueInput = document.getElementById("venue") as HTMLInputElement;
+    const costInput = document.getElementById("cost") as HTMLInputElement;
+    const dateInput = document.getElementById("date") as HTMLInputElement;
+    const timeInput = document.getElementById("time") as HTMLInputElement;
+    const agesInput = document.getElementById("ages") as HTMLInputElement;
+    const accessibilityInput = document.getElementById(
+      "accessibility"
+    ) as HTMLInputElement;
+    const emailInput = document.getElementById("email") as HTMLInputElement;
+    const ticketingInput = document.getElementById(
+      "ticketing"
+    ) as HTMLInputElement;
+    const extraInfoInput = document.getElementById(
+      "extraInfo"
+    ) as HTMLInputElement;
+    titleInput.value = "";
+    venueInput.value = "";
+    costInput.value = "";
+    dateInput.value = "";
+    timeInput.value = "";
+    agesInput.value = "21+";
+    accessibilityInput.value = "Handicap Accessible";
+    emailInput.value = "";
+    ticketingInput.value = "";
+    extraInfoInput.value = "";
   };
 
   // Submit Handler
-  const submitHandler = async function (e) {
+  const submitHandler = async function (e: FormEvent) {
+    const target = e.target as HTMLFormElement;
     e.preventDefault();
-    const dateArray = e.target.date.value.split("-");
+    const dateArray = target.date.value.split("-");
 
     const gigPost = {
-      title: e.target.title.value,
+      title: target.gigTitle.value,
       key: Math.random(),
-      venue: e.target.venue.value,
-      cost: e.target.cost.value,
+      venue: target.venue.value,
+      cost: target.cost.value,
       year: dateArray[0],
       month: dateArray[1],
       day: dateArray[2],
-      time: e.target.time.value,
-      age: e.target.ages.value,
-      access: e.target.accessibility.value,
-      email: e.target.email.value,
-      ticketing: e.target.ticketing.value,
-      additional: e.target.extraInfo.value,
+      time: target.time.value,
+      age: target.ages.value,
+      access: target.accessibility.value,
+      email: target.email.value,
+      ticketing: target.ticketing.value,
+      additional: target.extraInfo.value,
     };
 
     props.addEvt(gigPost);
@@ -45,10 +84,10 @@ function Form(props) {
     <div className={styles.formContainer}>
       <form className={styles.gigForm} id="gigForm" onSubmit={submitHandler}>
         <div className={styles.formInput}>
-          <label htmlFor="title">Gig:</label>
+          <label htmlFor="gigTitle">Gig:</label>
           <input
             type="text"
-            id="title"
+            id="gigTitle"
             name="title"
             placeholder="eg. Limp Bizkit // Bjork // Donna Summer"
           />
