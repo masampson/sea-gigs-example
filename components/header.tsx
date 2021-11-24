@@ -1,7 +1,11 @@
 import styles from "../styles/components/header.module.css";
 import NavBar from "./navBar";
 
-function Header(props) {
+interface HeaderProps {
+  getDisplay: (display: string) => void;
+}
+
+function Header(props: HeaderProps) {
   return (
     <div className={styles.headerContainer}>
       <div className={styles.h1Container}>
@@ -12,10 +16,7 @@ function Header(props) {
         </h1>
         <h2>- EST. 2021 -</h2>
       </div>
-      <NavBar
-        getDisplay={props.getDisplay}
-        filterGigMonth={props.filterGigMonth}
-      ></NavBar>
+      <NavBar getDisplay={props.getDisplay}></NavBar>
     </div>
   );
 }

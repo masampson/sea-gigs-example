@@ -1,6 +1,25 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+// middleware/authCheck.ts
 
-export default function handler(req, res) {
+import { NextApiRequest, NextApiResponse } from "next";
+
+interface GigMetafield {
+  title: string;
+  key: string;
+  type: string;
+  value: string;
+}
+
+interface ApiRequestProps {
+  title: string;
+  type: string;
+  metafields: GigMetafield[];
+  options: {
+    slug_field: boolean;
+  };
+}
+
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {
     res.status(400).send({ message: "Only POST requests" });
     return;
@@ -15,7 +34,7 @@ export default function handler(req, res) {
     });
     console.log(req.body.evt);
     const data = req.body.evt;
-    const params = {
+    const params: ApiRequestProps = {
       title: data.title,
       type: "gigs",
       metafields: [
@@ -106,11 +125,11 @@ export default function handler(req, res) {
     console.log(params);
     bucket
       .addObject(params)
-      .then((data) => {
+      .then((data: ApiRequestProps) => {
         console.log(data);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((err: any) => {
+        console.error(err);
       });
   }
 
