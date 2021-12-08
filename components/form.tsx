@@ -90,11 +90,12 @@ function Form(props: FormProps) {
             id="gigTitle"
             name="title"
             placeholder="eg. Limp Bizkit // Bjork // Donna Summer"
+            required
           />
         </div>
         <div className={styles.halfFormInput} id="venueInput">
           <label htmlFor="venue">Venue:</label>
-          <input type="text" id="venue" name="venue" />
+          <input type="text" id="venue" name="venue" required />
         </div>
         <div className={styles.halfFormInput} id="costInput">
           <label htmlFor="cost">Cost:</label>
@@ -102,7 +103,7 @@ function Form(props: FormProps) {
         </div>
         <div className={styles.dropFormInput}>
           <label htmlFor="date">Date:</label>
-          <input type="date" id="date" name="date" />
+          <input type="date" id="date" name="date" required />
         </div>
         <div className={styles.dropFormInput}>
           <label htmlFor="time">Time:</label>
@@ -128,11 +129,11 @@ function Form(props: FormProps) {
         </div>
         <div className={styles.formInput}>
           <label htmlFor="email">Your Email:</label>
-          <input type="email" id="email" name="email" />
+          <input type="email" id="email" name="email" required />
         </div>
         <div className={styles.formInput}>
           <label htmlFor="ticketing">Venue/Ticketing link:</label>
-          <input type="text" id="ticketing" name="ticketing" />
+          <input type="text" id="ticketing" name="ticketing" required />
         </div>
         <div className={styles.formInput}>
           <label htmlFor="extraInfo">Additional Information:</label>
