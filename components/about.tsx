@@ -12,6 +12,12 @@ function About() {
         influence of corporate interest in the arts community.
       </p>
       <section className={styles.faqSection}>
+        <h2>Disclaimer:</h2>
+        <h3>
+          All information on SEA GIGS was the most accurate at the time it was
+          listed. We are not responsible for any incorrect information, please
+          refer to the venue websites for the most up to date information.
+        </h3>
         <h2>FAQ:</h2>
         <h3>How does it work?</h3>
         <p>
@@ -43,8 +49,12 @@ function About() {
           include some way for site visitors to find out more information,
           whether it's submitted in lieu of a ticket link or in the "More Info"
           section.{" "}
-          <b>Let us know what you do and do not want shared publicly</b>. If
-          there's no way for people to find out more about the show, we won't
+          <b>
+            Let us know what you do and do not want shared publicly, and let us
+            know who you are in relation to the show.
+          </b>
+          If there's no way for people to find out more about the show, we won't
+          list it. If you aren't associated with the house or bands, we won't
           list it.
         </p>
         <h3>
