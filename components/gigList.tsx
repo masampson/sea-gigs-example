@@ -71,6 +71,7 @@ function GigList(props: GigListProps) {
   let nextNovemberArray = dateSort(11, props.nextYearGigs);
   let nextDecemberArray = dateSort(12, props.nextYearGigs);
 
+  // Combine Arrays
   let monthsArray = [
     ...januaryArray,
     ...februaryArray,
