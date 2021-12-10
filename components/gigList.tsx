@@ -173,7 +173,7 @@ function GigList(props: GigListProps) {
   let content =
     filteredGigs.length >= 1 ? (
       filteredGigs.map((gig) => (
-        <GigCard gig={gig} key={Math.random()}></GigCard>
+        <GigCard gig={gig} key={gig.metadata.key}></GigCard>
       ))
     ) : (
       <h2 className={styles.noGigPlaceholder}>No gigs :( ... yet :)</h2>
