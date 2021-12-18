@@ -43,6 +43,7 @@ function GigList(props) {
     let nextOctoberArray = dateSort(10, props.nextYearGigs);
     let nextNovemberArray = dateSort(11, props.nextYearGigs);
     let nextDecemberArray = dateSort(12, props.nextYearGigs);
+    // Combine Arrays
     let monthsArray = [
         ...januaryArray,
         ...februaryArray,
@@ -113,7 +114,7 @@ function GigList(props) {
         });
     }
     // DEFINE CONTENT BASED ON FILTERS AND SEARCH
-    let content = filteredGigs.length >= 1 ? (filteredGigs.map((gig) => (<gigCard_1.default gig={gig} key={Math.random()}></gigCard_1.default>))) : (<h2 className={gigList_module_css_1.default.noGigPlaceholder}>No gigs :( ... yet :)</h2>);
+    let content = filteredGigs.length >= 1 ? (filteredGigs.map((gig) => (<gigCard_1.default gig={gig} key={gig.metadata.key}></gigCard_1.default>))) : (<h2 className={gigList_module_css_1.default.noGigPlaceholder}>No gigs :( ... yet :)</h2>);
     // MONTH FILTER FUNCTION
     function selectMonth(e) {
         const target = e.target;
