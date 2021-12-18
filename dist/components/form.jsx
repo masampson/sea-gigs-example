@@ -67,11 +67,11 @@ function Form(props) {
       <form className={form_module_css_1.default.gigForm} id="gigForm" onSubmit={submitHandler}>
         <div className={form_module_css_1.default.formInput}>
           <label htmlFor="gigTitle">Gig:</label>
-          <input type="text" id="gigTitle" name="title" placeholder="eg. Limp Bizkit // Bjork // Donna Summer"/>
+          <input type="text" id="gigTitle" name="title" placeholder="eg. Limp Bizkit // Bjork // Donna Summer" required/>
         </div>
         <div className={form_module_css_1.default.halfFormInput} id="venueInput">
           <label htmlFor="venue">Venue:</label>
-          <input type="text" id="venue" name="venue"/>
+          <input type="text" id="venue" name="venue" required/>
         </div>
         <div className={form_module_css_1.default.halfFormInput} id="costInput">
           <label htmlFor="cost">Cost:</label>
@@ -79,7 +79,7 @@ function Form(props) {
         </div>
         <div className={form_module_css_1.default.dropFormInput}>
           <label htmlFor="date">Date:</label>
-          <input type="date" id="date" name="date"/>
+          <input type="date" id="date" name="date" required/>
         </div>
         <div className={form_module_css_1.default.dropFormInput}>
           <label htmlFor="time">Time:</label>
@@ -105,11 +105,11 @@ function Form(props) {
         </div>
         <div className={form_module_css_1.default.formInput}>
           <label htmlFor="email">Your Email:</label>
-          <input type="email" id="email" name="email"/>
+          <input type="email" id="email" name="email" required/>
         </div>
         <div className={form_module_css_1.default.formInput}>
           <label htmlFor="ticketing">Venue/Ticketing link:</label>
-          <input type="text" id="ticketing" name="ticketing"/>
+          <input type="text" id="ticketing" name="ticketing" required/>
         </div>
         <div className={form_module_css_1.default.formInput}>
           <label htmlFor="extraInfo">Additional Information:</label>
