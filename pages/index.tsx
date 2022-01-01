@@ -44,13 +44,14 @@ function SeaGigs({ gigs }: GigListProps) {
 
   let thisMonthGigs = currentYearGigs.filter(
     (gig) =>
-      gig.metadata.month === currentMonth &&
+      parseInt(gig.metadata.month) === currentMonth &&
       parseInt(gig.metadata.day) >= currentDay
   );
 
   let futureMonthGigs = currentYearGigs.filter(
-    (gig) => gig.metadata.month > currentMonth
+    (gig) => parseInt(gig.metadata.month) > currentMonth
   );
+  console.log(currentMonth);
 
   let currentGigs = [...thisMonthGigs, ...futureMonthGigs];
 

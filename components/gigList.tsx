@@ -12,7 +12,7 @@ export interface Gig {
     venue: string;
     cost: string;
     year: number;
-    month: string | number;
+    month: string;
     day: string;
     time: string;
     age: string;
