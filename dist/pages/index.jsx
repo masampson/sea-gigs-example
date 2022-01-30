@@ -48,12 +48,17 @@ function SeaGigs({ gigs }) {
     let currentMonth = today.getMonth() + 1;
     let currentDay = today.getDate();
     let currentYear = today.getFullYear();
-    let currentYearGigs = gigs.filter((gig) => gig.metadata.year === currentYear);
+    let currentYearGigs = gigs.filter((gig) => parseInt(gig.metadata.year, 10) === currentYear);
     let futureYearGigs = gigs.filter((gig) => gig.metadata.year > currentYear);
     let thisMonthGigs = currentYearGigs.filter((gig) => parseInt(gig.metadata.month) === currentMonth &&
         parseInt(gig.metadata.day) >= currentDay);
     let futureMonthGigs = currentYearGigs.filter((gig) => parseInt(gig.metadata.month) > currentMonth);
-    console.log(currentMonth);
+    console.log({
+        currentYearGigs,
+        futureYearGigs,
+        thisMonthGigs,
+        futureMonthGigs,
+    });
     let currentGigs = [...thisMonthGigs, ...futureMonthGigs];
     // let filteredGigs =
     //   filterState === "all"
@@ -74,6 +79,7 @@ function SeaGigs({ gigs }) {
     else {
         content = (<gigList_1.default gigs={currentGigs} nextYearGigs={futureYearGigs} getDisplay={getDisplay}></gigList_1.default>);
     }
+    console.log(gigs);
     return (<div>
       <head_1.default>
         <meta charSet="UTF-8"/>
