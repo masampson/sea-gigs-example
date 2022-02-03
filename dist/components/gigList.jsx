@@ -109,7 +109,6 @@ function GigList(props) {
                 return (gig.metadata.gig.toLowerCase().includes(searchString) ||
                     gig.metadata.venue.toLowerCase().includes(searchString));
             });
-            // console.log(filteredGigs);
             setSearchState(filteredGigs);
         });
     }

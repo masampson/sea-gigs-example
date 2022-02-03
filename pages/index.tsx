@@ -16,8 +16,6 @@ const bucket = api.bucket({
 function SeaGigs({ gigs }: GigListProps) {
   // STATE MANAGEMENT ==========
   const [displayState, setDisplayState] = useState("gigs");
-  // const [gigsFilteredMonthState, setGigsFilteredMonthState] = useState(gigs);
-  // console.log(gigsFilteredMonthState);
 
   // FUNCTIONS ===============
 
@@ -28,7 +26,6 @@ function SeaGigs({ gigs }: GigListProps) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ evt }),
     });
-    // console.log(response, evt);
   }
 
   // DATE TURNOVER ================
@@ -53,12 +50,6 @@ function SeaGigs({ gigs }: GigListProps) {
   let futureMonthGigs = currentYearGigs.filter(
     (gig) => parseInt(gig.metadata.month) > currentMonth
   );
-  console.log({
-    currentYearGigs,
-    futureYearGigs,
-    thisMonthGigs,
-    futureMonthGigs,
-  });
 
   let currentGigs = [...thisMonthGigs, ...futureMonthGigs];
 
@@ -94,8 +85,6 @@ function SeaGigs({ gigs }: GigListProps) {
       ></GigList>
     );
   }
-
-  console.log(gigs);
 
   return (
     <div>
