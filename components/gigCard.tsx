@@ -36,7 +36,7 @@ function GigCard(props: GigCardProps) {
   );
 
   return (
-    <div className={styles.showListing} key={gig.key}>
+    <div className={styles.showListing} key={props.key}>
       <div className={styles.showInfo}>
         <h3>{props.gig.title}</h3>
         <p className={styles.showVenue}>{gig.venue}</p>
