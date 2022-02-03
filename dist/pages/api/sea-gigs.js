@@ -14,7 +14,6 @@ function handler(req, res) {
             slug: "sea-gigs-production",
             write_key: process.env.COSMIC_WRITE_KEY,
         });
-        console.log(req.body.evt);
         const data = req.body.evt;
         const params = {
             title: data.title,
@@ -104,12 +103,9 @@ function handler(req, res) {
                 slug_field: true,
             },
         };
-        console.log(params);
         bucket
             .addObject(params)
-            .then((data) => {
-            console.log(data);
-        })
+            .then((data) => { })
             .catch((err) => {
             console.error(err);
         });

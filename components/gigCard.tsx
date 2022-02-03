@@ -35,6 +35,8 @@ function GigCard(props: GigCardProps) {
     </span>
   );
 
+  console.log(props.key);
+
   return (
     <div className={styles.showListing} key={props.key}>
       <div className={styles.showInfo}>
@@ -44,7 +46,12 @@ function GigCard(props: GigCardProps) {
           ${gig.cost} / {gig.age} / {gig.access}
         </p>
         <p>
-          <a href={gig.ticketing} className={styles.ticketLink} target="_blank">
+          <a
+            href={gig.ticketing}
+            className={styles.ticketLink}
+            target="_blank"
+            key={props.key}
+          >
             Ticket Information
           </a>
         </p>
