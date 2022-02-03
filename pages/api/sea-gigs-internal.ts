@@ -32,7 +32,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       slug: "sea-gigs-production",
       write_key: process.env.COSMIC_WRITE_KEY,
     });
-    console.log(req.body.evt);
     const data = req.body.evt;
     const params: ApiRequestProps = {
       title: data.title,
@@ -122,12 +121,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         slug_field: true,
       },
     };
-    console.log(params);
+
     bucket
       .addObject(params)
-      .then((data: ApiRequestProps) => {
-        console.log(data);
-      })
+      .then((data: ApiRequestProps) => {})
       .catch((err: any) => {
         console.error(err);
       });

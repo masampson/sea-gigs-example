@@ -29,8 +29,6 @@ const bucket = api.bucket({
 function SeaGigs({ gigs }) {
     // STATE MANAGEMENT ==========
     const [displayState, setDisplayState] = (0, react_1.useState)("gigs");
-    // const [gigsFilteredMonthState, setGigsFilteredMonthState] = useState(gigs);
-    // console.log(gigsFilteredMonthState);
     // FUNCTIONS ===============
     // Add event to Cosmic
     function addEvt(evt) {
@@ -40,7 +38,6 @@ function SeaGigs({ gigs }) {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ evt }),
             });
-            // console.log(response, evt);
         });
     }
     // DATE TURNOVER ================
@@ -53,12 +50,6 @@ function SeaGigs({ gigs }) {
     let thisMonthGigs = currentYearGigs.filter((gig) => parseInt(gig.metadata.month) === currentMonth &&
         parseInt(gig.metadata.day) >= currentDay);
     let futureMonthGigs = currentYearGigs.filter((gig) => parseInt(gig.metadata.month) > currentMonth);
-    console.log({
-        currentYearGigs,
-        futureYearGigs,
-        thisMonthGigs,
-        futureMonthGigs,
-    });
     let currentGigs = [...thisMonthGigs, ...futureMonthGigs];
     // let filteredGigs =
     //   filterState === "all"
@@ -79,7 +70,6 @@ function SeaGigs({ gigs }) {
     else {
         content = (<gigList_1.default gigs={currentGigs} nextYearGigs={futureYearGigs} getDisplay={getDisplay}></gigList_1.default>);
     }
-    console.log(gigs);
     return (<div>
       <head_1.default>
         <meta charSet="UTF-8"/>

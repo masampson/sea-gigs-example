@@ -12,6 +12,7 @@ function GigCard(props) {
       <p>{hourFormat + ":" + gig.time.slice(3)}</p>
       <p>{hour > 12 ? "PM" : "AM"}</p>
     </span>);
+    console.log(props.key);
     return (<div className={gigCard_module_css_1.default.showListing} key={props.key}>
       <div className={gigCard_module_css_1.default.showInfo}>
         <h3>{props.gig.title}</h3>
