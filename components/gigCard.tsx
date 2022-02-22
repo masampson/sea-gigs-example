@@ -35,8 +35,6 @@ function GigCard(props: GigCardProps) {
     </span>
   );
 
-  console.log(props.key);
-
   return (
     <div className={styles.showListing} key={props.key}>
       <div className={styles.showInfo}>
