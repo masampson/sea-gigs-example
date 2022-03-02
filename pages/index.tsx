@@ -35,7 +35,8 @@ function SeaGigs({ gigs }: GigListProps) {
   let currentDay = today.getDate();
   let currentYear = today.getFullYear();
 
-  let currentYearGigs = gigs.filter(
+  let approvedGigs = gigs.filter((gig) => gig.metadata.approved === "yes");
+  let currentYearGigs = approvedGigs.filter(
     (gig) => parseInt(gig.metadata.year as any, 10) === currentYear
   );
 
@@ -116,9 +117,6 @@ export async function getServerSideProps() {
   const data = await bucket.getObjects({
     query: {
       type: "gigs",
-      "metadata.approved": {
-        $eq: "yes",
-      },
     },
     props: "slug,title,content,metadata", // Limit the API response data by props
   });

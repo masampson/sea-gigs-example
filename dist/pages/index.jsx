@@ -45,7 +45,8 @@ function SeaGigs({ gigs }) {
     let currentMonth = today.getMonth() + 1;
     let currentDay = today.getDate();
     let currentYear = today.getFullYear();
-    let currentYearGigs = gigs.filter((gig) => parseInt(gig.metadata.year, 10) === currentYear);
+    let approvedGigs = gigs.filter((gig) => gig.metadata.approved === "yes");
+    let currentYearGigs = approvedGigs.filter((gig) => parseInt(gig.metadata.year, 10) === currentYear);
     let futureYearGigs = gigs.filter((gig) => gig.metadata.year > currentYear);
     let thisMonthGigs = currentYearGigs.filter((gig) => parseInt(gig.metadata.month) === currentMonth &&
         parseInt(gig.metadata.day) >= currentDay);
@@ -98,9 +99,6 @@ function getServerSideProps() {
         const data = yield bucket.getObjects({
             query: {
                 type: "gigs",
-                "metadata.approved": {
-                    $eq: "yes",
-                },
             },
             props: "slug,title,content,metadata", // Limit the API response data by props
         });
