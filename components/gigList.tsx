@@ -9,6 +9,7 @@ export interface Gig {
     gig: string;
     title: string;
     key: number;
+    approved: string;
     venue: string;
     cost: string;
     year: number;
