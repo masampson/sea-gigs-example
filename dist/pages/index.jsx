@@ -43,7 +43,7 @@ function SeaGigs({ gigs }) {
     // DATE TURNOVER ================
     let today = new Date();
     let currentMonth = today.getMonth() + 1;
-    let currentDay = 9;
+    let currentDay = today.getDate();
     let currentYear = today.getFullYear();
     let approvedGigs = gigs.filter((gig) => gig.metadata.approved === "yes");
     let currentYearGigs = approvedGigs.filter((gig) => parseInt(gig.metadata.year, 10) === currentYear);
