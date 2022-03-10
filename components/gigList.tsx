@@ -171,6 +171,8 @@ function GigList(props: GigListProps) {
   }
 
   // DEFINE CONTENT BASED ON FILTERS AND SEARCH
+  console.log("before the map", filteredGigs.length, filteredGigs);
+
   let content =
     filteredGigs.length >= 1 ? (
       filteredGigs.map((gig) => (

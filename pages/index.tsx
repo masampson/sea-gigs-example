@@ -32,7 +32,7 @@ function SeaGigs({ gigs }: GigListProps) {
 
   let today = new Date();
   let currentMonth = today.getMonth() + 1;
-  let currentDay = today.getDate();
+  let currentDay = 9;
   let currentYear = today.getFullYear();
 
   let approvedGigs = gigs.filter((gig) => gig.metadata.approved === "yes");
