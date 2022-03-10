@@ -12,8 +12,7 @@ function GigCard(props) {
       <p>{hourFormat + ":" + gig.time.slice(3)}</p>
       <p>{hour > 12 ? "PM" : "AM"}</p>
     </span>);
-    console.log(props.linkKey);
-    return (<div className={gigCard_module_css_1.default.showListing} key={props.linkKey}>
+    return (<div className={gigCard_module_css_1.default.showListing}>
       <div className={gigCard_module_css_1.default.showInfo}>
         <h3>{props.gig.title}</h3>
         <p className={gigCard_module_css_1.default.showVenue}>{gig.venue}</p>
@@ -21,7 +20,7 @@ function GigCard(props) {
           ${gig.cost} / {gig.age} / {gig.access}
         </p>
         <p>
-          <a href={gig.ticketing} className={gigCard_module_css_1.default.ticketLink} target="_blank" key={props.linkKey}>
+          <a href={props.link} className={gigCard_module_css_1.default.ticketLink} target="_blank">
             Ticket Information
           </a>
         </p>
