@@ -177,6 +177,7 @@ function GigList(props: GigListProps) {
         <GigCard
           gig={gig}
           key={gig.slug.toString() + gig.metadata.day.toString()}
+          linkKey={gig.slug.toString() + gig.metadata.day.toString()}
         ></GigCard>
       ))
     ) : (
