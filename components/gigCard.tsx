@@ -21,7 +21,7 @@ interface GigCardProps {
     slug: string;
     title: string;
   };
-  link: string;
+  linkKey: any;
 }
 
 function GigCard(props: GigCardProps) {
@@ -34,9 +34,10 @@ function GigCard(props: GigCardProps) {
       <p>{hour > 12 ? "PM" : "AM"}</p>
     </span>
   );
+  console.log(props.linkKey);
 
   return (
-    <div className={styles.showListing}>
+    <div className={styles.showListing} key={props.linkKey}>
       <div className={styles.showInfo}>
         <h3>{props.gig.title}</h3>
         <p className={styles.showVenue}>{gig.venue}</p>
@@ -44,7 +45,12 @@ function GigCard(props: GigCardProps) {
           ${gig.cost} / {gig.age} / {gig.access}
         </p>
         <p>
-          <a href={props.link} className={styles.ticketLink} target="_blank">
+          <a
+            href={gig.ticketing}
+            className={styles.ticketLink}
+            target="_blank"
+            key={props.linkKey}
+          >
             Ticket Information
           </a>
         </p>
