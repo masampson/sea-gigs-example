@@ -113,6 +113,7 @@ function GigList(props) {
         });
     }
     // DEFINE CONTENT BASED ON FILTERS AND SEARCH
+    console.log("before the map", filteredGigs.length, filteredGigs);
     let content = filteredGigs.length >= 1 ? (filteredGigs.map((gig) => (<gigCard_1.default gig={gig} key={gig.slug.toString() + gig.metadata.day.toString()} link={gig.metadata.ticketing}></gigCard_1.default>))) : (<h2 className={gigList_module_css_1.default.noGigPlaceholder}>No gigs :( ... yet :)</h2>);
     // MONTH FILTER FUNCTION
     function selectMonth(e) {
