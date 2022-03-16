@@ -75,7 +75,7 @@ function Form(props) {
         </div>
         <div className={form_module_css_1.default.halfFormInput} id="costInput">
           <label htmlFor="cost">Cost:</label>
-          <input type="text" id="cost" name="cost"/>
+          <input type="text" id="cost" name="cost" required/>
         </div>
         <div className={form_module_css_1.default.dropFormInput}>
           <label htmlFor="date">Date:</label>
@@ -83,7 +83,7 @@ function Form(props) {
         </div>
         <div className={form_module_css_1.default.dropFormInput}>
           <label htmlFor="time">Time:</label>
-          <input type="time" id="time" name="time"/>
+          <input type="time" id="time" name="time" required/>
         </div>
         <div className={form_module_css_1.default.dropFormInput}>
           <label htmlFor="ages">Ages:</label>
