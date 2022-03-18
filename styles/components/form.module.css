@@ -3,7 +3,7 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   width: 50%;
-  margin: 8% 0% 0px 35%;
+  margin: 5% 0% 0px 35%;
 }
 
 .gigForm {
@@ -121,8 +121,8 @@
 
 @media screen and (max-width: 700px) {
   .formContainer {
-    width: 100%;
-    margin: 165px 10% 0px 10%;
+    width: 50%;
+    margin: 100px 10% 0px 40%;
   }
 }
 

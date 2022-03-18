@@ -1,46 +1,19 @@
-import { FormEvent, useState } from "react";
+import { FormEvent } from "react";
 import styles from "../styles/components/form.module.css";
-import { Gig, GigListProps } from "./gigList";
 
-interface FormSubmitFormat {
-  title: string;
-  key: number;
-  venue: string;
-  cost: string;
-  year: number;
-  month: number;
-  day: number;
-  time: string;
-  age: string;
-  access: string;
-  email: string;
-  ticketing: string;
-  additional: string;
-}
-
-interface FormProps {
-  addEvt: (evt: FormSubmitFormat) => void;
-}
-
-function Form(props: FormProps) {
+function Form({ addEvt, user }) {
   // Form Reset
   const formReset = function () {
-    const titleInput = document.getElementById("gigTitle") as HTMLInputElement;
-    const venueInput = document.getElementById("venue") as HTMLInputElement;
-    const costInput = document.getElementById("cost") as HTMLInputElement;
-    const dateInput = document.getElementById("date") as HTMLInputElement;
-    const timeInput = document.getElementById("time") as HTMLInputElement;
-    const agesInput = document.getElementById("ages") as HTMLInputElement;
-    const accessibilityInput = document.getElementById(
-      "accessibility"
-    ) as HTMLInputElement;
-    const emailInput = document.getElementById("email") as HTMLInputElement;
-    const ticketingInput = document.getElementById(
-      "ticketing"
-    ) as HTMLInputElement;
-    const extraInfoInput = document.getElementById(
-      "extraInfo"
-    ) as HTMLInputElement;
+    const titleInput = document.getElementById("gigTitle");
+    const venueInput = document.getElementById("venue");
+    const costInput = document.getElementById("cost");
+    const dateInput = document.getElementById("date");
+    const timeInput = document.getElementById("time");
+    const agesInput = document.getElementById("ages");
+    const accessibilityInput = document.getElementById("accessibility");
+    const emailInput = document.getElementById("email");
+    const ticketingInput = document.getElementById("ticketing");
+    const extraInfoInput = document.getElementById("extraInfo");
     titleInput.value = "";
     venueInput.value = "";
     costInput.value = "";
@@ -54,8 +27,8 @@ function Form(props: FormProps) {
   };
 
   // Submit Handler
-  const submitHandler = async function (e: FormEvent) {
-    const target = e.target as HTMLFormElement;
+  const submitHandler = async function (e) {
+    const target = e.target;
     e.preventDefault();
     const dateArray = target.date.value.split("-");
 
@@ -75,14 +48,36 @@ function Form(props: FormProps) {
       additional: target.extraInfo.value,
     };
 
-    props.addEvt(gigPost);
+    addEvt(gigPost);
     formReset();
     alert("Gig Submitted!");
   };
 
+  const standardEmail = (
+    <div className={styles.formInput}>
+      <label htmlFor="email">Your Email:</label>
+      <input type="email" id="email" name="email" required />
+    </div>
+  );
+
+  const adminEmail = (
+    <div className={styles.formInput}>
+      <label htmlFor="email">Your Email:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        value={user?.email}
+        required
+        disabled
+      />
+    </div>
+  );
+
   return (
     <div className={styles.formContainer}>
       <form className={styles.gigForm} id="gigForm" onSubmit={submitHandler}>
+        {user && <h1>Internal Submission Form</h1>}
         <div className={styles.formInput}>
           <label htmlFor="gigTitle">Gig:</label>
           <input
@@ -127,10 +122,7 @@ function Form(props: FormProps) {
             <option value="Unknown">Unknown</option>
           </select>
         </div>
-        <div className={styles.formInput}>
-          <label htmlFor="email">Your Email:</label>
-          <input type="email" id="email" name="email" required />
-        </div>
+        {user ? adminEmail : standardEmail}
         <div className={styles.formInput}>
           <label htmlFor="ticketing">Venue/Ticketing link:</label>
           <input type="text" id="ticketing" name="ticketing" required />
@@ -151,15 +143,17 @@ function Form(props: FormProps) {
           />
         </div>
       </form>
-      <div className={styles.bookerNotice}>
-        <p>
-          Are you a booker or promoter and need to submit many gigs at once?
-          Please get in touch at{" "}
-          <span>
-            <a href="mailto: goseagigs@gmail.com">goseagigs@gmail.com</a>
-          </span>
-        </p>
-      </div>
+      {!user && (
+        <div className={styles.bookerNotice}>
+          <p>
+            Are you a booker or promoter and need to submit many gigs at once?
+            Please get in touch at{" "}
+            <span>
+              <a href="mailto: goseagigs@gmail.com">goseagigs@gmail.com</a>
+            </span>
+          </p>
+        </div>
+      )}
     </div>
   );
 }

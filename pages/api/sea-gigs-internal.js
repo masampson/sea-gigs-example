@@ -3,23 +3,7 @@
 
 import { NextApiRequest, NextApiResponse } from "next";
 
-interface GigMetafield {
-  title: string;
-  key: string;
-  type: string;
-  value: string;
-}
-
-interface ApiRequestProps {
-  title: string;
-  type: string;
-  metafields: GigMetafield[];
-  options: {
-    slug_field: boolean;
-  };
-}
-
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default function handler(req, res) {
   if (req.method !== "POST") {
     res.status(400).send({ message: "Only POST requests" });
     return;
@@ -33,7 +17,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       write_key: process.env.COSMIC_WRITE_KEY,
     });
     const data = req.body.evt;
-    const params: ApiRequestProps = {
+    const params = {
       title: data.title,
       type: "gigs",
       metafields: [
@@ -48,7 +32,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
           title: "Approved",
           key: "approved",
           type: "text",
-          value: "no",
+          value: "yes",
         },
         {
           title: "Venue",
@@ -124,8 +108,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
     bucket
       .addObject(params)
-      .then((data: ApiRequestProps) => {})
-      .catch((err: any) => {
+      .then((data) => {})
+      .catch((err) => {
         console.error(err);
       });
   }
