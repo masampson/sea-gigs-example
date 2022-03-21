@@ -14,13 +14,38 @@
   margin: 0 20px;
   font-family: "Unica One", sans-serif;
   font-size: 2rem;
-  color: #ef7e56;
-  transition: color 0.4s;
+  transition: color 0.2s;
 }
 
 .navContainer li:hover {
   color: #ded5c4;
   cursor: pointer;
+}
+
+.inactive {
+  color: #ef7e56;
+}
+
+.active {
+  color: #ded5c4;
+}
+
+.donateButton {
+  padding-top: 30px;
+}
+
+.userBadge {
+  display: flex;
+  padding-left: 25px;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userBadge p {
+  font-size: 14px;
+  color: #ef7e56;
+  margin: 5px 0;
 }
 
 .mobileNav {
@@ -31,6 +56,10 @@
 @media screen and (max-width: 775px) {
   .navContainer li {
     font-size: 1.75rem;
+  }
+
+  .userBadge p {
+    font-size: 10px;
   }
 }
 
@@ -48,6 +77,10 @@
     position: fixed;
     background-color: #cacaca;
     border: 1px solid black;
+  }
+
+  .userBadge {
+    display: none;
   }
 
   .mobileNav {

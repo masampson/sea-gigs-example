@@ -1,12 +1,7 @@
 import { KeyboardEvent, MouseEvent } from "react";
 import styles from "../styles/components/searchFilter.module.css";
 
-interface SearchFilterProps {
-  selectMonth: (month: MouseEvent) => void;
-  searchGigs: (search: KeyboardEvent) => void;
-}
-
-function SearchFilter(props: SearchFilterProps) {
+function SearchFilter(props) {
   const dropdownMonthArray = [
     "ALL",
     "JANUARY",

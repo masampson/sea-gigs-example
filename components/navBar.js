@@ -1,19 +1,38 @@
 import styles from "../styles/components/navBar.module.css";
 import { Menu } from "react-ionicons";
+import { logOut, useAuth } from "../utils/firebase";
 
-interface NavBarProps {
-  getDisplay: (display: string) => void;
-}
+function NavBar({ getDisplay, loginToggle, display }) {
+  const user = useAuth();
 
-function NavBar(props: NavBarProps) {
   function showMenu() {
-    let nav = document.getElementById("navMenu") as HTMLElement;
+    let nav = document.getElementById("navMenu");
     if (nav.style.display === "none") {
       nav.style.display = "block";
     } else {
       nav.style.display = "none";
     }
   }
+
+  async function handleLogOut() {
+    try {
+      await logOut();
+    } catch {
+      alert("Error");
+    }
+  }
+
+  const logOutButton = (
+    <li className={styles.inactive} onClick={handleLogOut}>
+      LOG OUT
+    </li>
+  );
+
+  const logInButton = (
+    <li className={styles.inactive} onClick={() => loginToggle()}>
+      LOGIN
+    </li>
+  );
 
   return (
     <div className={styles.navContainer}>
@@ -22,12 +41,26 @@ function NavBar(props: NavBarProps) {
       </div>
       <nav>
         <ul id="navMenu">
-          <li onClick={() => props.getDisplay("gigs")}>
-            <a href="">GIGS</a>
+          <li
+            className={display === "gigs" ? styles.active : styles.inactive}
+            onClick={() => getDisplay("gigs")}
+          >
+            GIGS
           </li>
-          <li onClick={() => props.getDisplay("about")}>ABOUT</li>
-          <li onClick={() => props.getDisplay("submit")}>SUBMIT</li>
-          <li>
+          <li
+            className={display === "about" ? styles.active : styles.inactive}
+            onClick={() => getDisplay("about")}
+          >
+            ABOUT
+          </li>
+          <li
+            className={display === "submit" ? styles.active : styles.inactive}
+            onClick={() => getDisplay("submit")}
+          >
+            SUBMIT
+          </li>
+          {user ? logOutButton : logInButton}
+          <li className={styles.donateButton}>
             <form
               action="https://www.paypal.com/donate"
               method="post"
@@ -56,6 +89,12 @@ function NavBar(props: NavBarProps) {
             </form>
           </li>
         </ul>
+        {user && (
+          <div className={styles.userBadge}>
+            <p>ADMIN MODE</p>
+            <p>{user.email}</p>
+          </div>
+        )}
       </nav>
     </div>
   );

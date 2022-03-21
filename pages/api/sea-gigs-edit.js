@@ -3,29 +3,13 @@
 
 import { NextApiRequest, NextApiResponse } from "next";
 
-interface GigMetafield {
-  title: string;
-  key: string;
-  type: string;
-  value: string;
-}
-
-interface ApiRequestProps {
-  title: string;
-  type: string;
-  metafields: GigMetafield[];
-  options: {
-    slug_field: boolean;
-  };
-}
-
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== "POST") {
-    res.status(400).send({ message: "Only POST requests" });
+export default function handler(req, res) {
+  if (req.method !== "PATCH") {
+    res.status(400).send({ message: "Only PATCH requests" });
     return;
   }
 
-  if (req.method === "POST") {
+  if (req.method === "PATCH") {
     const Cosmic = require("cosmicjs");
     const api = Cosmic();
     const bucket = api.bucket({
@@ -33,9 +17,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       write_key: process.env.COSMIC_WRITE_KEY,
     });
     const data = req.body.evt;
-    const params: ApiRequestProps = {
+    const params = {
+      id: data.id,
       title: data.title,
-      type: "gigs",
       metafields: [
         { title: "Gig", key: "gig", type: "text", value: data.title },
         {
@@ -48,7 +32,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
           title: "Approved",
           key: "approved",
           type: "text",
-          value: "no",
+          value: "yes",
         },
         {
           title: "Venue",
@@ -123,12 +107,14 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     };
 
     bucket
-      .addObject(params)
-      .then((data: ApiRequestProps) => {})
-      .catch((err: any) => {
+      .editObject(params)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
         console.error(err);
       });
   }
 
-  res.status(200).json({ message: "Submitted" });
+  res.status(200).json({ message: "Edited" });
 }

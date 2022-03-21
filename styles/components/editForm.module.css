@@ -1,9 +1,9 @@
 .formContainer {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  align-content: center;
   flex-wrap: wrap;
   width: 50%;
-  margin: 5% 0% 0px 35%;
 }
 
 .gigForm {
@@ -78,15 +78,14 @@
 .submitContainer {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
-.submitInput {
+.submitInput,
+.delete {
   font-family: "Poppins", sans-serif;
-  color: #ffffff;
   width: 100px;
   height: 60px;
-  background-color: #ef7e56;
   border: 2px solid white;
   border-radius: 8%;
   cursor: pointer;
@@ -95,6 +94,20 @@
 
 .submitInput:hover {
   background-color: #fcb095;
+}
+
+.submitInput {
+  color: #ffffff;
+  background-color: #ef7e56;
+}
+
+.delete {
+  color: black;
+  background-color: rgb(255, 75, 75);
+}
+
+.delete:hover {
+  background-color: rgb(255, 154, 154);
 }
 
 /* BOOKER INFO */

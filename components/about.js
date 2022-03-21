@@ -1,11 +1,8 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const about_module_css_1 = __importDefault(require("../styles/components/about.module.css"));
+import styles from "../styles/components/about.module.css";
+
 function About() {
-    return (<section className={about_module_css_1.default.aboutContainer}>
+  return (
+    <section className={styles.aboutContainer}>
       <p>
         SEA GIGS is an artist owned and operated portal to the world of
         public-facing creative events in Seattle. As a democratic platform of
@@ -14,7 +11,7 @@ function About() {
         the artist and consumer back on an even playing field and remove the
         influence of corporate interest in the arts community.
       </p>
-      <section className={about_module_css_1.default.faqSection}>
+      <section className={styles.faqSection}>
         <h2>Disclaimer:</h2>
         <h3>
           All information on SEA GIGS was the most accurate at the time it was
@@ -23,21 +20,19 @@ function About() {
         </h3>
         <h2>FAQ:</h2>
         <h3>How does it work?</h3>
-        <p>
-          <ul>
-            <li>
-              Users submit event information through our form hosted on this
-              website.
-            </li>
-            <li>
-              Admins verify all information as best we can before approving the
-              event to be displayed on gig list.
-            </li>
-            <li>Gigs are listed chronologically, not ranked in any way.</li>
-            <li>You can filter by month or by select venues</li>
-            <li>You get to the gig</li>
-          </ul>
-        </p>
+        <ul>
+          <li>
+            Users submit event information through our form hosted on this
+            website.
+          </li>
+          <li>
+            Admins verify all information as best we can before approving the
+            event to be displayed on gig list.
+          </li>
+          <li>Gigs are listed chronologically, not ranked in any way.</li>
+          <li>You can filter by month or by select venues</li>
+          <li>You get to the gig</li>
+        </ul>
         <h3>Can I pay to promote my show?</h3>
         <p>
           The intention with SEA GIGS is to avoid the influence of money on the
@@ -91,30 +86,32 @@ function About() {
         </p>
       </section>
       {/* <ul>
-          <li>
-            Users submit event information through our form hosted on this
-            website.
-          </li>
-          <li>
-            Admins verify all information as best we can before approving the
-            event to be displayed on gig list.
-          </li>
-          <li>
-            Some listings come directly from venues or production groups, but no
-            one listing is given precidence over any other, even if the source is
-            a financial contributor to SEA GIGS.
-          </li>
-          <li>Gigs are listed chronologically, not ranked in any way.</li>
-          <li>You get to the gig</li>
-        </ul>
-        <h2>Contact:</h2>
-        <p>
-          Questions? Concerns about a listing? Want to be involved? Please don't
-          hesitate to get in touch at
-          <span>
-            <a href="mailto: goseagigs@gmail.com"> goseagigs@gmail.com</a>
-          </span>
-        </p> */}
-    </section>);
+        <li>
+          Users submit event information through our form hosted on this
+          website.
+        </li>
+        <li>
+          Admins verify all information as best we can before approving the
+          event to be displayed on gig list.
+        </li>
+        <li>
+          Some listings come directly from venues or production groups, but no
+          one listing is given precidence over any other, even if the source is
+          a financial contributor to SEA GIGS.
+        </li>
+        <li>Gigs are listed chronologically, not ranked in any way.</li>
+        <li>You get to the gig</li>
+      </ul>
+      <h2>Contact:</h2>
+      <p>
+        Questions? Concerns about a listing? Want to be involved? Please don't
+        hesitate to get in touch at
+        <span>
+          <a href="mailto: goseagigs@gmail.com"> goseagigs@gmail.com</a>
+        </span>
+      </p> */}
+    </section>
+  );
 }
-exports.default = About;
+
+export default About;

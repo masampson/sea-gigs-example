@@ -14,6 +14,7 @@
 
 .showListing {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   width: 100%;
   border-bottom: 1px solid #ded5c4;
@@ -21,15 +22,23 @@
 
 .showVenue {
   font-weight: 400;
-  font-style: italic;
+  color: #305973;
+  /* font-style: italic; */
 }
 
 .showAgeAccess {
   font-weight: 200;
+  color: black;
+}
+
+.showAgeAccess div {
+  display: inline;
+  width: 100%;
 }
 
 .showDate {
   margin-left: auto;
+  width: 80px;
   font-weight: 200;
   padding: 10px;
   background-color: #ef7e56;
@@ -47,23 +56,73 @@
   font-weight: 400;
 }
 
-.ticketLink {
+.googleLink {
   font-size: 0.8rem;
   font-weight: 400;
+  width: 100%;
   font-style: italic;
   color: #ef7e56;
   transition: color 0.2s;
 }
 
-.showInfo a:hover {
+.showInfo a,
+.moreInfo {
+  color: #ef7e56;
+  margin-left: 3px;
+}
+
+.showInfo a:hover,
+.moreInfo:hover {
+  transition: all 0.2s;
   color: #ded5c4;
+  cursor: pointer;
+}
+
+.moreInfo {
+  display: inline;
+}
+
+.editLink {
+  margin-left: 10%;
+  color: #305973;
+  text-decoration: underline;
+}
+
+.editLink:hover {
+  transition: color 0.2s;
+  color: #ef7e56;
+  cursor: pointer;
+}
+
+.additionalText {
+  width: 100%;
+  margin: 15px 0;
+  /* visibility: hidden; */
+  /* justify-self: center; */
 }
 
 /* PAGE BREAKS */
+
+@media screen and (max-width: 1070px) {
+  .editLink {
+    margin-left: 5%;
+  }
+}
+
+@media screen and (max-width: 875px) {
+  .editLink {
+    margin-left: 3%;
+    font-size: 0.8rem;
+  }
+}
 
 @media screen and (max-width: 550px) {
   .showInfo,
   .showDate {
     font-size: 0.6rem;
+  }
+
+  .showDate {
+    width: 60px;
   }
 }

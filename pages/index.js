@@ -2,9 +2,11 @@ import styles from "../styles/pages/Home.module.css";
 import Head from "next/head";
 import { useState } from "react";
 import Header from "../components/header";
-import GigList, { GigListProps } from "../components/gigList";
+import GigList from "../components/gigList";
 import About from "../components/about";
 import Form from "../components/form";
+import Login from "../components/login";
+import { useAuth } from "../utils/firebase";
 const Cosmic = require("cosmicjs");
 const api = Cosmic();
 
@@ -13,20 +15,36 @@ const bucket = api.bucket({
   read_key: process.env.COSMIC_READ_KEY,
 });
 
-function SeaGigs({ gigs }: GigListProps) {
+function SeaGigs({ gigs }) {
+  const user = useAuth();
+
   // STATE MANAGEMENT ==========
   const [displayState, setDisplayState] = useState("gigs");
+  const [isLogIn, setIsLogIn] = useState(false);
 
   // FUNCTIONS ===============
 
   // Add event to Cosmic
-  async function addEvt(evt: {}) {
+  async function addEvt(evt) {
     const response = await fetch("/api/sea-gigs", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ evt }),
     });
   }
+
+  async function addEvtInternal(evt) {
+    const response = await fetch("/api/sea-gigs-internal", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ evt }),
+    });
+  }
+
+  //Show/hide login card
+  const loginToggle = () => {
+    setIsLogIn(!isLogIn);
+  };
 
   // DATE TURNOVER ================
 
@@ -37,7 +55,7 @@ function SeaGigs({ gigs }: GigListProps) {
 
   let approvedGigs = gigs.filter((gig) => gig.metadata.approved === "yes");
   let currentYearGigs = approvedGigs.filter(
-    (gig) => parseInt(gig.metadata.year as any, 10) === currentYear
+    (gig) => parseInt(gig.metadata.year, 10) === currentYear
   );
 
   let futureYearGigs = gigs.filter((gig) => gig.metadata.year > currentYear);
@@ -60,7 +78,7 @@ function SeaGigs({ gigs }: GigListProps) {
   //     : currentGigs.filter((gig) => gig.metadata.month === filterState);
 
   // Set display (Gigs, About, Submit etc.)
-  function getDisplay(display: string) {
+  function getDisplay(display) {
     setDisplayState(display);
   }
 
@@ -76,7 +94,7 @@ function SeaGigs({ gigs }: GigListProps) {
   if (displayState === "about") {
     content = <About></About>;
   } else if (displayState === "submit") {
-    content = <Form addEvt={addEvt}></Form>;
+    content = <Form addEvt={user ? addEvtInternal : addEvt} user={user} />;
   } else {
     content = (
       <GigList
@@ -106,7 +124,12 @@ function SeaGigs({ gigs }: GigListProps) {
       </Head>
 
       <section className={styles.bodyContainer}>
-        <Header getDisplay={getDisplay}></Header>
+        <Header
+          loginToggle={loginToggle}
+          getDisplay={getDisplay}
+          display={displayState}
+        ></Header>
+        {isLogIn && <Login loginToggle={loginToggle} />}
         {content}
       </section>
     </div>

@@ -1,41 +1,12 @@
 import GigCard from "./gigCard";
 import SearchFilter from "./searchFilter";
 import styles from "../styles/components/gigList.module.css";
-import { useState, MouseEvent } from "react";
+import { useState } from "react";
 
-export interface Gig {
-  content?: string;
-  metadata: {
-    gig: string;
-    title: string;
-    key: number;
-    approved: string;
-    venue: string;
-    cost: string;
-    year: number;
-    month: string;
-    day: string;
-    time: string;
-    age: string;
-    access: string;
-    email: string;
-    ticketing: string;
-    additional?: string;
-  };
-  slug: string;
-  title: string;
-}
-
-export interface GigListProps {
-  gigs: Gig[];
-  nextYearGigs: Gig[];
-  getDisplay: (display: string) => void;
-}
-
-function GigList(props: GigListProps) {
+function GigList(props) {
   // SORT GIGS CHRONOLOGICALLY
 
-  function dateSort(month: string | number, array: Gig[]) {
+  function dateSort(month, array) {
     let sortedMonth = array
       .filter((gig) => gig.metadata.month === month)
       .sort(function (a, b) {
@@ -105,29 +76,12 @@ function GigList(props: GigListProps) {
 
   // SET STATE FOR SEARCH AND FILTER
   const [searchState, setSearchState] = useState(sortedGigs);
-  const [monthState, setMonthState] = useState<string | number>("all");
+  const [monthState, setMonthState] = useState("all");
 
   let filteredGigs =
     monthState === "all"
       ? searchState
       : searchState.filter((gig) => gig.metadata.month === monthState);
-
-  interface monthID {
-    ALL: "all";
-    GIGS: "all";
-    JANUARY: "01";
-    FEBRUARY: "02";
-    MARCH: "03";
-    APRIL: "04";
-    MAY: "05";
-    JUNE: "06";
-    JULY: "07";
-    AUGUST: "08";
-    SEPTEMBER: "09";
-    OCTOBER: 10;
-    NOVEMBER: 11;
-    DECEMBER: 12;
-  }
 
   const monthIdentifiers = {
     ALL: "all",
@@ -147,17 +101,17 @@ function GigList(props: GigListProps) {
   };
 
   // MONTH FILTER
-  function filterGigMonth(selectedData: keyof monthID) {
+  function filterGigMonth(selectedData) {
     setMonthState(monthIdentifiers[selectedData]);
     props.getDisplay("gigs");
   }
 
   // SEARCH FUNCTION
   function searchGigs() {
-    let searchBar = document.getElementById("searchBar") as HTMLInputElement;
+    let searchBar = document.getElementById("searchBar");
 
     searchBar.addEventListener("keyup", (e) => {
-      const target = e.target as HTMLInputElement;
+      const target = e.target;
       const searchString = target.value.toLowerCase();
       filteredGigs = monthsArray.filter((gig) => {
         return (
@@ -171,7 +125,6 @@ function GigList(props: GigListProps) {
   }
 
   // DEFINE CONTENT BASED ON FILTERS AND SEARCH
-  console.log("before the map", filteredGigs.length, filteredGigs);
 
   let content =
     filteredGigs.length >= 1 ? (
@@ -179,7 +132,6 @@ function GigList(props: GigListProps) {
         <GigCard
           gig={gig}
           key={gig.slug.toString() + gig.metadata.day.toString()}
-          link={gig.metadata.ticketing}
         ></GigCard>
       ))
     ) : (
@@ -187,9 +139,9 @@ function GigList(props: GigListProps) {
     );
 
   // MONTH FILTER FUNCTION
-  function selectMonth(e: MouseEvent) {
-    const target = e.target as HTMLInputElement;
-    let month = target.innerHTML as keyof monthID;
+  function selectMonth(e) {
+    const target = e.target;
+    let month = target.innerHTML;
     filterGigMonth(month);
   }
 

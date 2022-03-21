@@ -1,0 +1,45 @@
+.bodyContainer {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 100px;
+  font-family: "Poppins", sans-serif;
+}
+
+.bodyContainer a {
+  color: #e75723;
+}
+
+.bodyContainer a:hover {
+  transition: all 0.2s;
+  color: #305973;
+}
+
+.bodyContainer h1 {
+  text-align: center;
+}
+
+.headerHero {
+  font-family: "Unica One", sans-serif;
+  font-size: 5rem;
+  color: #305973;
+  margin: 20px 0 0 0;
+}
+
+.headerSubtitle {
+  font-family: "Unica One", sans-serif;
+  color: #e75723;
+  margin-top: 0;
+}
+
+.h1Container {
+  width: 100%;
+  margin: 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid #e75723;
+}
