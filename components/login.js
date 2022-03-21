@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import styles from "../styles/components/login.module.css";
-import { logOut, signUp, useAuth, logIn } from "../utils/firebase";
+import { useAuth, logIn } from "../utils/firebase";
 
 export default function Login({ loginToggle }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -28,7 +28,8 @@ export default function Login({ loginToggle }) {
   //   setIsLoading(false);
   // }
 
-  async function handleLogIn() {
+  async function handleSubmit(e) {
+    e.preventDefault();
     setIsLoading(true);
     try {
       await logIn(emailRef.current.value, passwordRef.current.value);
@@ -38,47 +39,48 @@ export default function Login({ loginToggle }) {
     setIsLoading(false);
     loginToggle();
   }
-  console.log(user);
 
   return (
     <div className={styles.cardContainer}>
       <div className={styles.loginCard}>
         <h1>Admin Login</h1>
-
-        <input
-          ref={emailRef}
-          type="email"
-          placeholder="Email"
-          className={styles.input}
-        />
-        <input
-          ref={passwordRef}
-          type="password"
-          placeholder="Password"
-          className={styles.input}
-        />
-        {/* <button disabled={isLoading || user !== null} onClick={handleSignup}>
-            Sign Up
-          </button> */}
-        <div className={styles.buttonContainer}>
-          <button
-            disabled={isLoading || user !== null}
-            onClick={handleLogIn}
-            className={styles.loginButton}
-          >
-            Login
-          </button>
-          <button
-            disabled={isLoading}
-            onClick={() => loginToggle()}
-            className={styles.cancelButton}
-          >
-            Cancel
-          </button>
-        </div>
-        {/* <button disabled={isLoading || !user} onClick={handleLogOut}>
-            Log Out
-          </button> */}
+        <form
+          className={styles.form}
+          id="loginForm"
+          onSubmit={handleSubmit}
+          action=""
+          method=""
+        >
+          <input
+            ref={emailRef}
+            type="email"
+            placeholder="Email"
+            className={styles.input}
+          />
+          <input
+            ref={passwordRef}
+            type="password"
+            placeholder="Password"
+            className={styles.input}
+          />
+          <div className={styles.buttonContainer}>
+            <button
+              disabled={isLoading}
+              onClick={() => loginToggle()}
+              className={styles.cancelButton}
+              type="button"
+            >
+              Cancel
+            </button>
+            <button
+              disabled={isLoading || user !== null}
+              className={styles.loginButton}
+              type="submit"
+            >
+              Login
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

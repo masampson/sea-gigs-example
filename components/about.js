@@ -20,21 +20,19 @@ function About() {
         </h3>
         <h2>FAQ:</h2>
         <h3>How does it work?</h3>
-        <p>
-          <ul>
-            <li>
-              Users submit event information through our form hosted on this
-              website.
-            </li>
-            <li>
-              Admins verify all information as best we can before approving the
-              event to be displayed on gig list.
-            </li>
-            <li>Gigs are listed chronologically, not ranked in any way.</li>
-            <li>You can filter by month or by select venues</li>
-            <li>You get to the gig</li>
-          </ul>
-        </p>
+        <ul>
+          <li>
+            Users submit event information through our form hosted on this
+            website.
+          </li>
+          <li>
+            Admins verify all information as best we can before approving the
+            event to be displayed on gig list.
+          </li>
+          <li>Gigs are listed chronologically, not ranked in any way.</li>
+          <li>You can filter by month or by select venues</li>
+          <li>You get to the gig</li>
+        </ul>
         <h3>Can I pay to promote my show?</h3>
         <p>
           The intention with SEA GIGS is to avoid the influence of money on the

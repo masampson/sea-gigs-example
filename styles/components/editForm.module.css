@@ -1,0 +1,146 @@
+.formContainer {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 50%;
+}
+
+.gigForm {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 100%;
+  border-radius: 5px;
+  color: #305973;
+  /* padding: 10px 15px 10px 10px; */
+}
+
+/* INPUTS */
+
+.formInput,
+.formInput input,
+.formInput textarea {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.8rem;
+  margin: 5px;
+  width: 100%;
+  border: none;
+}
+
+.halfFormInput,
+.halfFormInput input {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.8rem;
+  margin: 5px;
+  width: 40%;
+  border: none;
+}
+
+.halfFormInput input {
+  width: 100%;
+  height: 25px;
+  box-shadow: 2px 2px 5px rgb(139, 139, 139);
+  background-color: #eeeeee;
+}
+
+.formInput textarea {
+  height: 75px;
+  border: none;
+  box-shadow: 2px 2px 5px rgb(139, 139, 139);
+  background-color: #eeeeee;
+}
+
+.formInput input {
+  height: 25px;
+  box-shadow: 2px 2px 5px rgb(139, 139, 139);
+  background-color: #eeeeee;
+}
+
+.dropFormInput {
+  width: 40%;
+  margin: 5px;
+  font-size: 0.8rem;
+}
+
+.dropFormInput select,
+.dropFormInput input {
+  width: 100%;
+  height: 25px;
+  margin: 5px;
+  border: none;
+  box-shadow: 2px 2px 5px rgb(139, 139, 139);
+  background-color: #eeeeee;
+}
+
+/* SUBMIT BUTTON */
+
+.submitContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.submitInput,
+.delete {
+  font-family: "Poppins", sans-serif;
+  width: 100px;
+  height: 60px;
+  border: 2px solid white;
+  border-radius: 8%;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submitInput:hover {
+  background-color: #fcb095;
+}
+
+.submitInput {
+  color: #ffffff;
+  background-color: #ef7e56;
+}
+
+.delete {
+  color: black;
+  background-color: rgb(255, 75, 75);
+}
+
+.delete:hover {
+  background-color: rgb(255, 154, 154);
+}
+
+/* BOOKER INFO */
+.bookerNotice {
+  display: flex;
+}
+
+.bookerNotice p {
+  color: rgb(102, 102, 102);
+  font-style: italic;
+  text-align: center;
+}
+
+.bookerNotice a {
+  color: #ef7e56;
+  transition: color 0.2s;
+}
+
+.bookerNotice a:hover {
+  color: #fcb095;
+}
+
+/* PAGE BREAKS */
+
+@media screen and (max-width: 700px) {
+  .formContainer {
+    width: 50%;
+    margin: 100px 10% 0px 40%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .formContainer {
+    margin-top: 125px;
+  }
+}

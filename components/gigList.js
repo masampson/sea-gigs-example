@@ -132,7 +132,6 @@ function GigList(props) {
         <GigCard
           gig={gig}
           key={gig.slug.toString() + gig.metadata.day.toString()}
-          link={gig.metadata.ticketing}
         ></GigCard>
       ))
     ) : (
