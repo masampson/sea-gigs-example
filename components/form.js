@@ -21,7 +21,7 @@ function Form({ addEvt, user }) {
     timeInput.value = "";
     agesInput.value = "21+";
     accessibilityInput.value = "Handicap Accessible";
-    emailInput.value = "";
+    emailInput.value = user ? user?.email : "";
     ticketingInput.value = "";
     extraInfoInput.value = "";
   };
