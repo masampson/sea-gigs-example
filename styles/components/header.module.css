@@ -53,10 +53,6 @@
   .headerHero {
     font-size: 3rem;
   }
-
-  /* .h1Container {
-    margin: 0% 0 0 10%;
-  } */
 }
 
 @media screen and (max-width: 550px) {
