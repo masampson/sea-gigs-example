@@ -12,47 +12,6 @@ const bucket = api.bucket({
   read_key: process.env.COSMIC_READ_KEY,
 });
 
-export async function getStaticPaths() {
-  const data = await bucket.getObjects({
-    query: {
-      type: "gigs",
-      "metadata.approved": {
-        $eq: "yes",
-      },
-    },
-    props: "slug", // Limit the API response data by props
-  });
-  const gigs = await data.objects;
-  const paths = gigs.map((gig) => {
-    return {
-      params: { slug: gig.slug },
-    };
-  });
-
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params }) {
-  const slug = params.slug;
-  const data = await bucket.getObjects({
-    query: {
-      type: "gigs",
-      slug: {
-        $eq: slug,
-      },
-    },
-  });
-  const gigData = await data.objects;
-  return {
-    props: {
-      gigData,
-    },
-  };
-}
-
 export default function GigPage({ gigData }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalState, setModalState] = useState(null);
@@ -131,4 +90,63 @@ export default function GigPage({ gigData }) {
       </div>
     </div>
   );
+}
+
+// export async function getStaticPaths() {
+//   const data = await bucket.getObjects({
+//     query: {
+//       type: "gigs",
+//       "metadata.approved": {
+//         $eq: "yes",
+//       },
+//     },
+//     props: "slug", // Limit the API response data by props
+//   });
+//   const gigs = await data.objects;
+//   const paths = gigs.map((gig) => {
+//     return {
+//       params: { slug: gig.slug },
+//     };
+//   });
+
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// }
+
+// export async function getStaticProps({ params }) {
+//   const slug = params.slug;
+//   const data = await bucket.getObjects({
+//     query: {
+//       type: "gigs",
+//       slug: {
+//         $eq: slug,
+//       },
+//     },
+//   });
+//   const gigData = await data.objects;
+//   return {
+//     props: {
+//       gigData,
+//     },
+//   };
+// }
+
+export async function getServerSideProps({ params }) {
+  const slug = params.slug;
+  const data = await bucket.getObjects({
+    query: {
+      type: "gigs",
+      slug: {
+        $eq: slug,
+      },
+    },
+  });
+  const gigData = await data.objects;
+  return {
+    props: {
+      gigData,
+    },
+  };
 }
